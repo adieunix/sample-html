@@ -29,7 +29,8 @@ function tp() { // time picker
                     msg.textContent = 'Calculating..';
 
                     /* calling ajax */
-                    setTimeout(function () { // replace the timeout with ajax
+                    setTimeout(function () { // replace setTimeout with ajax
+                        // ajax success..
                         $('#add').removeClass('d-none');
                         msg.textContent = 'Total 10 spots reserved.';
                     }, 1000)
