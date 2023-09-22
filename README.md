@@ -1,3 +1,3 @@
 # sample-html
 
-Running html within http://localhost
+Running html as http://localhost
