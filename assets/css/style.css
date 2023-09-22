@@ -1,0 +1,166 @@
+@media (max-width: 767px) {
+    .tb-tnx-item td, .tb-tnx-head td {
+        padding-left: 1.25rem;
+        margin-bottom: 3px;
+    }
+    thead.thead-mobile {
+        display: none;
+    }
+    td.tb-img {
+        width: 30%
+    }
+}
+@media (min-width: 768px) {
+    td.tb-img {
+        padding-right: 10px;
+        width: 15%
+    }
+}
+.hr-modal {
+    border-bottom: 1px solid whitesmoke;
+    padding-bottom: 10px;
+}
+.nk-sidebar.is-dark {
+    background: #121212;
+    border-right-color: transparent;
+}
+.is-dark .nk-sidebar-head {
+    border-color: #663300;
+}
+.dark-mode .nk-menu-link, .dark-mode .link-dark, .dark-mode .link-list a {
+    color: #e9c6a4;
+}
+.nk-menu-icon,
+.nk-menu-link {
+    color: #e9c6a4;
+}
+.nk-menu-link:hover, .active>.nk-menu-link {
+    color: #ff8000;
+}
+.dark-mode .nk-menu-link:hover, .dark-mode .link-dark:hover, .dark-mode .link-list a:hover {
+    color: #ff8000;
+}
+.nk-menu-link:hover .nk-menu-icon, .nk-menu-item.active>.nk-menu-link .nk-menu-icon, .nk-menu-item.current-menu>.nk-menu-link .nk-menu-icon {
+    color: #ff8000;
+}
+.dark-mode .ql-picker.ql-expanded .ql-picker-label, .dark-mode .active>.nk-menu-link, .dark-mode .is-theme .nk-menu-link:hover .nk-menu-icon, .dark-mode .is-theme .nk-menu-item.active>.nk-menu-link .nk-menu-icon, .dark-mode .is-theme .nk-menu-item.current-menu>.nk-menu-link .nk-menu-icon, .dark-mode .is-theme .nk-menu-sub .nk-menu-link:hover, .dark-mode .is-theme .nk-menu-sub .active>.nk-menu-link, .dark-mode .page-link:hover {
+    color: #ff8000 !important;
+}
+.nk-menu-sub .nk-menu-link {
+    color: #FFFFFF;
+    font-size: 13px;
+}
+.is-dark .nk-menu-toggle:after, .is-theme .nk-menu-toggle:after {
+    color: #8b4702;
+}
+.nk-menu-sub .nk-menu-link:hover {
+    color: #ff8000;
+}
+li.breadcrumb-item a:hover,
+a {
+    color: #ff8000;
+}
+a:hover {
+    color: #5c3004;
+}
+.user-avatar, [class^="user-avatar"]:not([class*="-group"]) {
+    background: #ff8000;
+}
+.dropdown-menu-s1 {
+    border-top: 3px solid #ff8000;
+}
+.nk-news-icon .icon {
+    color: #ff8000;
+}
+.nk-error-head {
+    background: -webkit-linear-gradient(#ffd5ab, #ff8000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.form-control:focus {
+    border-color: #ff8000;
+}
+.btn-warning {
+    background-color: #ff8000;
+    border-color: #e77b0f;
+}
+.btn-warning:hover {
+    background-color: #d66b0f;
+    border-color: #cc680f;
+}
+.active>.nk-menu-sub {
+    background: #323232;
+    padding-top: 8px;
+}
+.nk-menu-sub .active>.nk-menu-link {
+    color: #ff8000;
+}
+.leave-blank {
+    font-size: 12px;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    color: #ff8000;
+}
+.bootstrap-tagsinput {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 0.4375rem 1rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 30px;
+    color: #3c4d62;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #dbdfea;
+    border-radius: 4px;
+    transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+    cursor: text;
+}
+.bootstrap-tagsinput .tag {
+    background-color: #878787;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    font-size: 12px;
+}
+.bootstrap-tagsinput .tag [data-role="remove"] {
+    margin-left: 8px;
+    cursor: pointer;
+    background: white;
+    border-radius: 10px;
+    padding: 0px 3px 1px;
+    font-size: 10px;
+    font-weight: bold;
+}
+.bootstrap-tagsinput .tag [data-role="remove"]:after {
+    padding: 0px 2px;
+    color: #878787;
+}
+.tb-tnx-item td {
+    vertical-align: top;
+}
+img.admin-rounded {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+.indo {
+    font-size: 13px;
+    top: 51%;
+    background: whitesmoke;
+    height: 34px;
+    width: 35px;
+    margin-left: 1px;
+}
+.no-right-br {
+    border-top-right-radius: 0;
+    -moz-border-top-right-radius: 0;
+    -o-border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    -moz-border-bottom-right-radius: 0;
+    -o-border-bottom-right-radius: 0;
+}

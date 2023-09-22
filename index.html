@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#222222" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Sample HTML</title>
+        <link rel="stylesheet" href="/assets/css/dashlite.min.css?ver=2.2.0">
+        <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css?ver=2.2.0">
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+
+    <body class="nk-body npc-general bg-white">
+        <div class="nk-app-root">
+            <div class="nk-main">
+                <div class="container-fluid">
+                    <div class="nk-content-inner">
+                        <div class="nk-content-body">
+                            <div class="components-preview wide-md mx-auto mt-5">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-head-content">
+                                        <h5 class="nk-block-title fw-normal">Sample Form</h5>
+                                    </div>
+                                </div>
+
+                                <div class="card card-bordered card-preview">
+                                    <div class="card-inner">
+                                        <div class="form-group">
+                                            <label class="form-label" for="xstartdate">Start Date <span style="color: red">*</span></label>
+                                            <div class="form-control-wrap focused">
+                                                <div class="form-icon form-icon-left">
+                                                    <em class="icon ni ni-calendar"></em>
+                                                </div>
+                                                <input id="xstartdate" type="text" class="form-control date-picker campaign-dp" data-date-format="yyyy-mm-dd" placeholder="Select campaign start date" readonly required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label" for="xenddate">End Date <span style="color: red">*</span></label>
+                                            <div class="form-control-wrap focused">
+                                                <div class="form-icon form-icon-left">
+                                                    <em class="icon ni ni-calendar"></em>
+                                                </div>
+                                                <input id="xenddate" type="text" class="form-control date-picker campaign-dp" data-date-format="yyyy-mm-dd" placeholder="Select campaign end date" readonly required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card card-bordered card-preview d-none" id="subWrapper">
+                                    <div class="card-inner">
+                                        <div class="form-group">
+                                            <label style="margin-bottom: 20px" class="form-label">Choose Campaign Time</label> &nbsp; <button id="add" type="button" class="btn btn-success d-none" onclick="add()">Add More Time Range</button>
+
+                                            <div id="sub">
+                                                <div class="sub-campaign mb-3" id="p1">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-control-wrap has-timepicker">
+                                                                <div class="form-icon form-icon-left">
+                                                                    <em class="icon ni ni-clock"></em>
+                                                                </div>
+                                                                <input data-date-start-date="" data-scrollbar data-time-format="HH:mm" id="xstart" type="text" class="form-control ztime-picker" placeholder="Time Start" readonly required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-control-wrap has-timepicker">
+                                                                <div class="form-icon form-icon-left">
+                                                                    <em class="icon ni ni-clock"></em>
+                                                                </div>
+                                                                <input data-date-start-date="" data-scrollbar data-time-format="HH:mm" id="xend" type="text" class="form-control ztime-picker" placeholder="Time End" readonly required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col"></div>
+                                                    </div>
+                                                    <p class="reserve d-none" style="font-size: 12px;color: red;margin-top: 5px;"></p>
+                                                    <input type="number" id="spot1" hidden>
+                                                    <input type="text" id="prefix1" hidden>
+                                                    <input type="text" id="result1" hidden>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/assets/js/bundle.js?ver=2.2.0"></script>
+        <script src="/assets/js/scripts.js?ver=2.2.0"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>
