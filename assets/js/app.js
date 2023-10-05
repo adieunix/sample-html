@@ -54,15 +54,18 @@ function tp() { // time picker
 
                     $('#check-adv').removeClass('d-none');
                     /* calling ajax */
-                    var startTime = '06:00';
-                    var endTime = '06:00';
+                    var displayId = 83,
+                        startDate = $('#xstartdate').val(),
+                        endDate = $('#xenddate').val(),
+                        startTime = $('#xstart').val(),
+                        endTime = $('#xend').val();
                     $.ajax({
                         url: 'https://stg-dashboard.lightbridge.id/api/check_campaign_available_spot',
                         type: 'post',
                         data: {
-                            displayId: 83,
-                            startDate: '2023-10-10',
-                            endDate: ' 2023-10-11',
+                            displayId: displayId,
+                            startDate: startDate,
+                            endDate: endDate,
                             startTime: startTime,
                             endTime: endTime,
                         },
@@ -71,6 +74,7 @@ function tp() { // time picker
                         },
                         dataType: 'json',
                         success: function (data) {
+                            console.log(data)
                             $('.tb').removeClass('d-none');
                             $('#check-adv').addClass('d-none');
                             data[0].available_spots.forEach(function (val) {
