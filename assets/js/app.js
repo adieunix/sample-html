@@ -10,30 +10,16 @@ $('.campaign-dp').datepicker({
         }
     });
 
-function rad(prefix, total, date, startTime, endTime) {
-    $('#x'+prefix).prop('checked', true);
-
-    $('#z'+prefix).keyup(function () {
+function rad(prefix, date, total) {
+    $('#x-'+date+'-'+prefix).prop('checked', true);
+    $('#z-'+date+'-'+prefix).keyup(function () {
         var val = this.value;
         if(val > Number(total)) {
-            $('#i'+prefix).removeClass('d-none');
+            $('#i-'+date+'-'+prefix).removeClass('d-none');
         } else {
-            $('#i'+prefix).addClass('d-none')
+            $('#i-'+date+'-'+prefix).addClass('d-none')
         }
-        if(val !== '' && Number(val) <= Number(total)) {
-            var res = [{
-                date: date,
-                start_time: startTime,
-                end_time: endTime,
-                spot: val,
-                prefix: prefix
-            }];
-            $('#pre').prop('disabled', false); // button submit enabled
-            $('#res').val(JSON.stringify(res));
-        } else {
-            $('#pre').prop('disabled', true); // button submit disabled
-        }
-    });
+    })
 }
 
 function tp() { // time picker
@@ -77,15 +63,18 @@ function tp() { // time picker
                             console.log(data)
                             $('.tb').removeClass('d-none');
                             $('#check-adv').addClass('d-none');
-                            data[0].available_spots.forEach(function (val) {
-                                $('#appx').append('<tr>\n' +
-                                    '                                                <td>\n' +
-                                    '                                                    <input id="x'+val.prefix+'" class="form-check-input rds" type="radio" name="radioSpot" value="'+val.prefix+'">\n' +
-                                    '                                                </td>\n' +
-                                    '                                                <td><strong>'+val.prefix+'</strong></td>\n' +
-                                    '                                                <td><input id="z'+val.prefix+'" onclick="rad(`'+val.prefix+'`,`'+val.total+'`,`'+data[0].date+'`,`'+startTime+'`,`'+endTime+'`)" type="number" max="'+val.total+'" class="form-control" placeholder="input spot"><div id="i'+val.prefix+'" class="text-danger d-none" style="font-size: 12px;margin-top: 5px;">Insufficient available spots. Please input lesser desired spots.</div></td>\n' +
-                                    '                                                <td><span class="text-danger">'+val.total+' spots available.</span></td>\n' +
-                                    '                                            </tr>')
+                            data.forEach((xval, i) => {
+                                $('#appx').append('<tr><td style="padding-left: 0; color: green" colspan="3"><strong>'+xval.date+'</strong></td></tr>')
+                                data[i].available_spots.forEach((val) => {
+                                    $('#appx').append('<tr>\n' +
+                                        '                                                <td>\n' +
+                                        '                                                    <input id="x-'+xval.date+'-'+val.prefix+'" class="form-check-input rds" type="radio" name="radioSpot-'+xval.date+'" value="'+val.prefix+'">\n' +
+                                        '                                                </td>\n' +
+                                        '                                                <td><strong>'+val.prefix+'</strong></td>\n' +
+                                        '                                                <td><input id="z-'+xval.date+'-'+val.prefix+'" onclick="rad(`'+val.prefix+'`,`'+xval.date+'`,`'+val.total+'`)" type="number" max="'+val.total+'" class="form-control" placeholder="input spot"><div id="i-'+xval.date+'-'+val.prefix+'" class="text-danger d-none" style="font-size: 12px;margin-top: 5px;">Insufficient available spots. Please input lesser desired spots.</div></td>\n' +
+                                        '                                                <td><span class="text-danger">'+val.total+' spots available.</span></td>\n' +
+                                        '                                            </tr>')
+                                })
                             })
                         }
                     })
