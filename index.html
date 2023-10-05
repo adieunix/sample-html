@@ -49,7 +49,7 @@
                                 <div class="card card-bordered card-preview d-none" id="subWrapper">
                                     <div class="card-inner">
                                         <div class="form-group">
-                                            <label style="margin-bottom: 20px" class="form-label">Choose Campaign Time</label> &nbsp; <button id="add" type="button" class="btn btn-success d-none" onclick="add()">Add More Time Range</button>
+<!--                                            <label style="margin-bottom: 20px" class="form-label">Choose Campaign Time</label> &nbsp; <button id="add" type="button" class="btn btn-success d-none" onclick="add()">Add More Time Range</button>-->
 
                                             <div id="sub">
                                                 <div class="sub-campaign mb-3" id="p1">
@@ -72,10 +72,27 @@
                                                         </div>
                                                         <div class="col"></div>
                                                     </div>
-                                                    <p class="reserve d-none" style="font-size: 12px;color: red;margin-top: 5px;"></p>
-                                                    <input type="number" id="spot1" hidden>
-                                                    <input type="text" id="prefix1" hidden>
-                                                    <input type="text" id="result1" hidden>
+
+                                                    <p id="check-adv" class="reserve d-none" style="font-size: 12px;color: red;margin-top: 5px;">Checking..</p>
+                                                    <table class="table table-hover mt-2 d-none tb">
+                                                        <thead>
+                                                        <tr>
+                                                            <th style="width: 10px"></th>
+                                                            <th scope="col">Prefix</th>
+                                                            <th scope="col">Spot</th>
+                                                            <th scope="col">Max. total spot</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="appx">
+
+                                                        </tbody>
+                                                    </table>
+                                                    <input type="text" id="res" hidden>
+
+<!--                                                    <p class="reserve d-none" style="font-size: 12px;color: red;margin-top: 5px;"></p>-->
+<!--                                                    <input type="number" id="spot1" hidden>-->
+<!--                                                    <input type="text" id="prefix1" hidden>-->
+<!--                                                    <input type="text" id="result1" hidden>-->
                                                 </div>
                                             </div>
                                         </div>

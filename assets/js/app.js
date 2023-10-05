@@ -10,6 +10,32 @@ $('.campaign-dp').datepicker({
         }
     });
 
+function rad(prefix, total, date, startTime, endTime) {
+    $('#x'+prefix).prop('checked', true);
+
+    $('#z'+prefix).keyup(function () {
+        var val = this.value;
+        if(val > Number(total)) {
+            $('#i'+prefix).removeClass('d-none');
+        } else {
+            $('#i'+prefix).addClass('d-none')
+        }
+        if(val !== '' && Number(val) <= Number(total)) {
+            var res = [{
+                date: date,
+                start_time: startTime,
+                end_time: endTime,
+                spot: val,
+                prefix: prefix
+            }];
+            $('#pre').prop('disabled', false); // button submit enabled
+            $('#res').val(JSON.stringify(res));
+        } else {
+            $('#pre').prop('disabled', true); // button submit disabled
+        }
+    });
+}
+
 function tp() { // time picker
     $('input.ztime-picker').timepicker({
         timeFormat: 'HH:mm',
@@ -25,66 +51,44 @@ function tp() { // time picker
 
             if($('#'+start).val() !== '' && $('#'+end).val() !== '') {
                 if($('#xstartdate').val() !== '' && $('#xenddate').val() !== '') {
-                    msg.classList.remove("d-none");
-                    msg.textContent = 'Calculating..';
 
+                    $('#check-adv').removeClass('d-none');
                     /* calling ajax */
-                    setTimeout(function () { // replace setTimeout with ajax
-                        // ajax success..
-                        $('#add').removeClass('d-none');
-                        msg.textContent = 'Total 10 spots reserved.';
-                    }, 1000)
+                    var startTime = '06:00';
+                    var endTime = '06:00';
+                    $.ajax({
+                        url: 'https://stg-dashboard.lightbridge.id/api/check_campaign_available_spot',
+                        type: 'post',
+                        data: {
+                            displayId: 83,
+                            startDate: '2023-10-10',
+                            endDate: ' 2023-10-11',
+                            startTime: startTime,
+                            endTime: endTime,
+                        },
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            $('.tb').removeClass('d-none');
+                            $('#check-adv').addClass('d-none');
+                            data[0].available_spots.forEach(function (val) {
+                                $('#appx').append('<tr>\n' +
+                                    '                                                <td>\n' +
+                                    '                                                    <input id="x'+val.prefix+'" class="form-check-input rds" type="radio" name="radioSpot" value="'+val.prefix+'">\n' +
+                                    '                                                </td>\n' +
+                                    '                                                <td><strong>'+val.prefix+'</strong></td>\n' +
+                                    '                                                <td><input id="z'+val.prefix+'" onclick="rad(`'+val.prefix+'`,`'+val.total+'`,`'+data[0].date+'`,`'+startTime+'`,`'+endTime+'`)" type="number" max="'+val.total+'" class="form-control" placeholder="input spot"><div id="i'+val.prefix+'" class="text-danger d-none" style="font-size: 12px;margin-top: 5px;">Insufficient available spots. Please input lesser desired spots.</div></td>\n' +
+                                    '                                                <td><span class="text-danger">'+val.total+' spots available.</span></td>\n' +
+                                    '                                            </tr>')
+                            })
+                        }
+                    })
                 } else {
                     $('#checkDate').removeClass('d-none');
                 }
             }
         }
     });
-}
-
-$(document).on('click', '.remove', function (e) {
-    var id = e.target.parentElement.parentElement.parentElement.id;
-    $('#'+id).remove();
-});
-
-function add() {
-    tp();
-    $('#sub').append('<div class="sub-campaign mb-3" id="'+random(7)+'">\n' +
-        '                                    <div class="row">\n' +
-        '                                        <div class="col">\n' +
-        '                                            <div class="form-control-wrap has-timepicker">\n' +
-        '                                                <div class="form-icon form-icon-left">\n' +
-        '                                                    <em class="icon ni ni-clock"></em>\n' +
-        '                                                </div>\n' +
-        '                                                <input data-date-start-date="" data-scrollbar data-time-format="HH:mm" id="'+random(7)+'" type="text" class="form-control ztime-picker" placeholder="Time Start" readonly required>\n' +
-        '                                            </div>\n' +
-        '                                        </div>\n' +
-        '                                        <div class="col">\n' +
-        '                                            <div class="form-control-wrap has-timepicker">\n' +
-        '                                                <div class="form-icon form-icon-left">\n' +
-        '                                                    <em class="icon ni ni-clock"></em>\n' +
-        '                                                </div>\n' +
-        '                                                <input data-date-start-date="" data-scrollbar data-time-format="HH:mm" id="'+random(7)+'" type="text" class="form-control ztime-picker" placeholder="Time End" readonly required>\n' +
-        '                                            </div>\n' +
-        '                                        </div>\n' +
-        '                                        <div class="col">\n' +
-        // '                                            <button type="button" class="btn btn-dark check" ng-click="check()" id="'+random(7)+'">Check</button> &nbsp;&nbsp;\n' +
-        '                                            <button type="button" class="btn btn-danger remove" >Remove</button>\n' +
-        '                                        </div>\n' +
-        '                                    </div>\n' +
-        '                                    <p class="reserve d-none" style="font-size: 12px;color: red;margin-top: 5px;"></p>\n' +
-        '                                    <input type="number" id="'+random(7)+'" hidden>\n' +
-        '                                    <input type="text" id="'+random(7)+'" hidden>\n' +
-        '                                    <input type="text" id="'+random(7)+'" hidden>\n' +
-        '                                </div>')
-}
-
-function random(len) {
-    var charSet = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    var randomString = '';
-    for (var i = 0; i < len; i++) {
-        var randomPoz = Math.floor(Math.random() * charSet.length);
-        randomString += charSet.substring(randomPoz,randomPoz+1);
-    }
-    return randomString;
 }
