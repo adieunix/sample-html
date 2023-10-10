@@ -10,7 +10,7 @@ $('.campaign-dp').datepicker({
         }
     });
 
-function rad(prefix, date, total) {
+function rad(prefix, date, total, startTime, endTime) {
     $('#x-'+date+'-'+prefix).prop('checked', true);
     $('#z-'+date+'-'+prefix).keyup(function () {
         var val = this.value;
@@ -18,6 +18,22 @@ function rad(prefix, date, total) {
             $('#i-'+date+'-'+prefix).removeClass('d-none');
         } else {
             $('#i-'+date+'-'+prefix).addClass('d-none')
+        }
+
+        if(val !== '' && Number(val) <= Number(total)) {
+            var res = [];
+            res.push({
+                date: date,
+                start_time: startTime,
+                end_time: endTime,
+                spot: val,
+                prefix: prefix
+            });
+            // console.log('RES: ', res);
+            $('#pre').prop('disabled', false);
+            $('#xy-'+date+'-'+prefix).val(JSON.stringify(res));
+        } else {
+            $('#pre').prop('disabled', true);
         }
     })
 }
@@ -60,7 +76,8 @@ function tp() { // time picker
                         },
                         dataType: 'json',
                         success: function (data) {
-                            console.log(data)
+                            // console.log(data)
+                            $('#xsubmit').removeClass('d-none');
                             $('.tb').removeClass('d-none');
                             $('#check-adv').addClass('d-none');
                             data.forEach((xval, i) => {
@@ -71,7 +88,7 @@ function tp() { // time picker
                                         '                                                    <input id="x-'+xval.date+'-'+val.prefix+'" class="form-check-input rds" type="radio" name="radioSpot-'+xval.date+'" value="'+val.prefix+'">\n' +
                                         '                                                </td>\n' +
                                         '                                                <td><strong>'+val.prefix+'</strong></td>\n' +
-                                        '                                                <td><input id="z-'+xval.date+'-'+val.prefix+'" onclick="rad(`'+val.prefix+'`,`'+xval.date+'`,`'+val.total+'`)" type="number" max="'+val.total+'" class="form-control" placeholder="input spot"><div id="i-'+xval.date+'-'+val.prefix+'" class="text-danger d-none" style="font-size: 12px;margin-top: 5px;">Insufficient available spots. Please input lesser desired spots.</div></td>\n' +
+                                        '                                                <td><input id="z-'+xval.date+'-'+val.prefix+'" onclick="rad(`'+val.prefix+'`,`'+xval.date+'`,`'+val.total+'`,`'+startTime+'`,`'+endTime+'`)" type="number" max="'+val.total+'" class="form-control" placeholder="input spot"><input value="" class="xy-result" type="text" id="xy-'+xval.date+'-'+val.prefix+'" hidden><div id="i-'+xval.date+'-'+val.prefix+'" class="text-danger d-none" style="font-size: 12px;margin-top: 5px;">Insufficient available spots. Please input lesser desired spots.</div></td>\n' +
                                         '                                                <td><span class="text-danger">'+val.total+' spots available.</span></td>\n' +
                                         '                                            </tr>')
                                 })
