@@ -70,7 +70,9 @@
                                                                 <input data-date-start-date="" data-scrollbar data-time-format="HH:mm" id="xend" type="text" class="form-control ztime-picker" placeholder="Time End" readonly required>
                                                             </div>
                                                         </div>
-                                                        <div class="col"></div>
+                                                        <div class="col">
+                                                            <button onclick="reset()" type="button" id="btn-reset" class="btn-primary btn d-none">RESET</button>
+                                                        </div>
                                                     </div>
 
                                                     <p id="check-adv" class="reserve d-none" style="font-size: 12px;color: red;margin-top: 5px;">Checking..</p>
@@ -112,6 +114,10 @@
                                             }
                                         };
                                         alert(JSON.stringify(arx));
+                                    }
+
+                                    function reset() {
+                                        location.reload();
                                     }
                                 </script>
 

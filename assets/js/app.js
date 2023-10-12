@@ -53,6 +53,11 @@ function tp() { // time picker
 
             if($('#'+start).val() !== '' && $('#'+end).val() !== '') {
                 if($('#xstartdate').val() !== '' && $('#xenddate').val() !== '') {
+                    /* Disabled date & time picker */
+                    $('#xstartdate').attr('disabled', true);
+                    $('#xenddate').attr('disabled', true);
+                    $('.ztime-picker').attr('disabled', true);
+                    $('#btn-reset').removeClass('d-none')
 
                     $('#check-adv').removeClass('d-none');
                     /* calling ajax */
