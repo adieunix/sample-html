@@ -46,12 +46,7 @@ function tp() { // time picker
         minTime: '06',
         maxTime: '10',
         change: function() {
-            var event = $(this);
-            var start = event[0].parentElement.parentElement.parentElement.children[0].getElementsByTagName('input')[0].id;
-            var end = event[0].parentElement.parentElement.parentElement.children[1].getElementsByTagName('input')[0].id;
-            var msg = event[0].parentElement.parentElement.parentElement.parentElement.children[1];
-
-            if($('#'+start).val() !== '' && $('#'+end).val() !== '') {
+            if($('#xstart').val() !== '' && $('#xend').val() !== '') {
                 if($('#xstartdate').val() !== '' && $('#xenddate').val() !== '') {
                     /* Disabled date & time picker */
                     $('#xstartdate').attr('disabled', true);

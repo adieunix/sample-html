@@ -105,14 +105,14 @@
                                 <button id="xsubmit" type="button" class="btn btn-success d-none" onclick="submit()">Submit</button>
                                 <script>
                                     function submit() {
-                                        var scan = $('#tabspot').find('.xy-result');
+                                        var scan = $('input[type=radio]:checked');
                                         var arx = [];
                                         for(var x=0;x<scan.length;x++) {
-                                            if(scan[x].value !== '') {
-                                                var rs = JSON.parse(scan[x].value);
-                                                arx.push(...rs)
-                                            }
+                                            var name = String(scan[x].id).replace('x','xy')
+                                            var rs = JSON.parse($('#'+name).val());
+                                            arx.push(...rs)
                                         };
+
                                         alert(JSON.stringify(arx));
                                     }
 
