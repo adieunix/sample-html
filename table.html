@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#222222" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Sample HTML</title>
+  <link rel="stylesheet" href="/assets/css/dashlite.min.css?ver=2.2.0">
+  <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css?ver=2.2.0">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body class="nk-body npc-general bg-white">
+<div class="nk-app-root">
+  <div class="nk-main">
+    <div class="container-fluid">
+      <div class="nk-content-inner">
+        <div class="nk-content-body">
+          <div class="components-preview wide-md mx-auto mt-5">
+            <nav>
+              <ul class="breadcrumb breadcrumb-arrow mb-1">
+                <li class="breadcrumb-item"><a href="/"><em class="icon ni ni-home-fill"></em> Home</a></li>
+                <li class="breadcrumb-item active">GET ALL TRANSACTION REPORT</li>
+              </ul>
+            </nav>
+
+            <div class="nk-block-between mb-4">
+              <div class="nk-block-head-content">
+                <h4 class="nk-block-title fw-normal">Get All Transaction Report</h4>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="row">
+                <div class="col-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Start Date</span>
+                    </div>
+                    <input id="xstartdate" type="text" class="form-control date-picker" data-date-format="yyyy-mm-dd" placeholder="Select start date" value="2023-10-24" readonly required>
+                  </div>
+                </div>
+                <div class="col-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">End Date</span>
+                    </div>
+                    <input id="xenddate" type="text" class="form-control date-picker" data-date-format="yyyy-mm-dd" placeholder="Select end date" value="2023-10-31" readonly required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="row">
+                    <div class="col-8">
+                      <div class="row">
+                        <div class="col-6">
+                          <div class="form-control-select">
+                            <select name="status" class="form-control" id="status">
+                              <option value="0" selected>Pending</option>
+                              <option value="1">Waiting Confirmation</option>
+                              <option value="2">Success</option>
+                              <option value="3">Expired</option>
+                              <option value="4">Canceled</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <button type="button" class="btn btn-primary">Submit</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+                      <a href="#" class="btn btn-success">Export to XLS</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/js/bundle.js?ver=2.2.0"></script>
+<script src="/assets/js/scripts.js?ver=2.2.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="/assets/js/app.js"></script>
+</body>
+</html>
