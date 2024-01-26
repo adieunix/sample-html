@@ -113,7 +113,17 @@
                                             arx.push(...rs)
                                         };
 
-                                        alert(JSON.stringify(arx));
+                                        /* Filter */
+                                        var startDate = moment($('#xstartdate').val());
+                                        var endDate = moment($('#xenddate').val());
+                                        var diff = (endDate.diff(startDate, 'days') + 1);
+
+                                        if(diff === arx.length) {
+                                            alert(JSON.stringify(arx));
+                                        } else {
+                                            alert('Pastikan semua slot di semua tanggal terisi')
+                                        }
+
                                     }
 
                                     function reset() {
