@@ -109,8 +109,8 @@
                                         var arx = [];
                                         for(var x=0;x<scan.length;x++) {
                                             var name = String(scan[x].id).replace('x','xy')
-                                            var rs = JSON.parse($('#'+name).val());
-                                            arx.push(...rs)
+                                            var rs = ($('#'+name).val() === '') ? '' : JSON.parse($('#'+name).val());
+                                            if(rs !== '') arx.push(...rs)
                                         };
 
                                         /* Filter */
