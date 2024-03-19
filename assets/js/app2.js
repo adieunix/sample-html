@@ -194,6 +194,10 @@ function getDt(dt) {
     return year + '-' + month + '-' + day;
 }
 
+function mod(n, d) {
+    return ((n % d) + d) % d;
+}
+
 function submit() {
     var displayId = $('#pid').val();
     var displayPrice = $('#priceDisplay').val();
@@ -207,7 +211,6 @@ function submit() {
     var slotPaket = $('#slotPaket').val();
     var minimumSpot = $('#minimumSpot').val();
     var minimumMultiple = $('#minimumMultiple').val();
-    var lang = $('#lang').val();
 
     var res = [];
     var diffDate = Number(moment($('#xenddate').val()).diff($('#xstartdate').val(), 'days'));
@@ -273,11 +276,7 @@ function submit() {
 
     if(totalAllSpots < totalSpotDaily) {
         $('#alert-spot').removeClass('d-none');
-        if(lang === 'id') {
-            $('#text-spot').text('Jumlah minimum pembelian untuk '+(diffDate + 1)+' hari adalah '+totalSpotDaily+' spots. Total pembelian kamu saat ini adalah '+totalAllSpots+' spots.');
-        } else {
-            $('#text-spot').text('Minimum purchase for '+(diffDate + 1)+' day(s) is '+totalSpotDaily+' spots. Your total purchase now is '+totalAllSpots+' spots.');
-        }
+        $('#text-spot').text('Jumlah minimum pembelian untuk '+(diffDate + 1)+' hari adalah '+totalSpotDaily+' spots. Total pembelian kamu saat ini adalah '+totalAllSpots+' spots.');
     } else {
         if(minimumMultiple === 0 || minimumMultiple === '0') {
             alert(JSON.stringify(res))
