@@ -30,7 +30,7 @@ function tp() {
         dynamic: false,
         interval: 10,
         minTime: '06',
-        maxTime: '10',
+        maxTime: '23',
         change: function() {
             var event = $(this);
             var id = event[0].parentElement.parentElement.parentElement.parentElement.id;
